@@ -20,23 +20,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         updateUI()
-
     }
-
+    
     @IBAction func choiceMade(_ sender: UIButton) {
         storyBrain.nextStory(userChoice: sender.currentTitle!)
         
         updateUI()
-        
     }
     
-    func updateUI()
+    @objc func updateUI()
     {
-        storyLabel.text = storyBrain.getStoryTitle()
+        UIView.transition(with: storyLabel, duration: 0.25, options: .transitionCrossDissolve, animations:
+                            {
+            self.storyLabel.text = self.storyBrain.getStoryTitle()
+        })
+        
         choice1Button.setTitle(storyBrain.getChoice1(), for: .normal)
         choice2Button.setTitle(storyBrain.getChoice2(), for: .normal)
     }
     
 }
-
-
