@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var storyLabel: UILabel!
     @IBOutlet weak var choice1Button: UIButton!
     @IBOutlet weak var choice2Button: UIButton!
+//    var storyNumber = 0
     
     let stories = [
         Story(title: "You see a fork in the road.", choice1: "Take a left.", choice2: "Take a right."),
@@ -28,8 +29,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func choiceMade(_ sender: UIButton) {
-        
+        if sender.currentTitle == stories[0].choice1
+        {
+            updateUI(storyNumber: 1)
+        }
+        else if sender.currentTitle == stories[0].choice2
+        {
+            updateUI(storyNumber: 2)
+        }
     }
     
+    
+    func updateUI(storyNumber: Int)
+    {
+        storyLabel.text = stories[storyNumber].title
+        choice1Button.setTitle(stories[storyNumber].choice1, for: .normal)
+        choice2Button.setTitle(stories[storyNumber].choice2, for: .normal)
+    }
 }
+
 
